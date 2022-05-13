@@ -1,0 +1,13 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  background-image: linear-gradient(to right, skyblue, darkblue);
+  color: white;
+}
+
+#daily {
+  color: white;
+  background-color: darkblue;
+}
