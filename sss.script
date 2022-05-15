@@ -1,0 +1,53 @@
+const getWeatherValues = async (
+  apiKey,
+  city,
+  stateCode = null,
+  countryCode = null
+) => {
+  try {
+    let wrapped;
+
+    if (stateCode && !countryCode) {
+      //Just a stateCode was provided
+      wrapped = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city},${stateCode}&appid=${apiKey}`
+      );
+    } else if (stateCode && countryCode) {
+      //state code and country code were both provided
+      wrapped = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city},${stateCode},${countryCode}&appid=${apiKey}`
+      );
+    } else if (!stateCode && !countryCode) {
+      wrapped = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+      );
+    }
+
+    return await wrapped.json();
+  } catch (err) {
+    throw err;
+  }
+};
+
+const searchCity = async () => {
+  let city = document.getElementById(`cityName`).value;
+  console.log("hi");
+  getWeatherValues("f5c283b2e9bec7013cf6c886b406b3f4", city)
+    .then((fetched) => {
+      //print it to the console
+
+      console.log(fetched);
+    })
+    .catch((err) => {
+      console.log("Error fetching from weather api: ", err);
+    });
+};
+
+
+
+
+
+
+<button onclick="searchCity()" class="btn btn-info">
+                Search
+              </button>

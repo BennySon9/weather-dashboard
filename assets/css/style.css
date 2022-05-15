@@ -1,13 +1,24 @@
 body {
-  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
 }
 
-h1 {
+/* Header background */
+.navbar {
   background-image: linear-gradient(to right, skyblue, darkblue);
   color: white;
+  justify-content: center;
 }
 
-#daily {
-  color: white;
-  background-color: darkblue;
+.hidden {
+  display: none;
+}
+
+/* Removes pointer for UV Index button display */
+.uv {
+  cursor: initial !important;
+}
+
+/* Ensures input block stays centered within card */
+#search-form input {
+  width: 100%;
 }
